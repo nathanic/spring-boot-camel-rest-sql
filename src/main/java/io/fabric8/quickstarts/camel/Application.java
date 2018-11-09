@@ -63,6 +63,10 @@ public class Application extends SpringBootServletInitializer {
                         "dataSource=dataSource&" +
                         "outputClass=io.fabric8.quickstarts.camel.Book")
                     .endRest()
+                .get("orders").description("Get all orders in the DB")
+                    .route().routeId("list-orders")
+                    .to("sql:select * from orders?dataSource=dataSource&outputClass=io.fabric8.quickstarts.camel.Order")
+                    .endRest()
                 .get("order/{id}").description("Details of an order by id")
                     .route().routeId("order-api")
                     .to("sql:select * from orders where id = :#${header.id}?" +
