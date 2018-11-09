@@ -64,7 +64,7 @@ public class Application extends SpringBootServletInitializer {
                         "outputClass=io.fabric8.quickstarts.camel.Book")
                     .endRest()
                 .get("dirty-looks").description("neener")
-                    .route().routeId('dirts')
+                    .route().routeId("looks")
                             .setBody(constant("fooble dooble gooble"))
                     .endRest()
                 .get("orders").description("Get all orders in the DB")
